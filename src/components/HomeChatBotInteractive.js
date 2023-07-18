@@ -119,7 +119,11 @@ function HomeChatBotInteractive() {
                 addBotMessage(response.data.error)
             }
         }).catch((error) => {
-            Swal.fire("Error", "Error en consulta de depósito", "error")
+            if (error.response && error.response.status === 500) {
+                Swal.fire("Error", "Error en consulta de depósito", "error")
+            } else {
+                addBotMessage(error.response.data.error)
+            }
         })
     }
 
@@ -134,8 +138,12 @@ function HomeChatBotInteractive() {
             } else {
                 addBotMessage(response.data.error)
             }
-        }).catch(() => {
-            Swal.fire("Error", "Error en consulta de rollos de papel", "error")
+        }).catch((error) => {
+            if (error.response && error.response.status === 500) {
+                Swal.fire("Error", "Error en consulta de rollos de papel", "error")
+            } else {
+                addBotMessage(error.response.data.error)
+            }
         })
     }
 
@@ -147,8 +155,12 @@ function HomeChatBotInteractive() {
             addBotMessage('El valor actual del Euro es $' + response.data.result.value_eur)
             addBotMessage('El valor actual del IPC es ' + response.data.result.value_ipc)
             addBotMessage('El valor actual de la UTM es $' + response.data.result.value_utm)
-        }).catch(() => {
-            Swal.fire("Error", "Error en consulta de indicadores", "error")
+        }).catch((error) => {
+            if (error.response && error.response.status === 500) {
+                Swal.fire("Error", "Error en consulta de indicadores", "error")
+            } else {
+                addBotMessage(error.response.data.error)
+            }
         })
     }
 
