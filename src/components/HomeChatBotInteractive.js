@@ -141,12 +141,13 @@ function HomeChatBotInteractive() {
 
     const indicators = () => {
         getIndicators().then((response) => {
-            addBotMessage('El valor actual de la UF es $' + response.data.value_uf)
-            addBotMessage('El valor actual del dólar observado es $' + response.data.value_usd)
-            addBotMessage('El valor actual del Dólar acuerdo es $' + response.data.value_exchange_usd)
-            addBotMessage('El valor actual del Euro es $' + response.data.value_eur)
-            addBotMessage('El valor actual del IPC es ' + response.data.value_ipc)
-            addBotMessage('El valor actual de la UTM es $' + response.data.value_utm)
+            console.log(response)
+            addBotMessage('El valor actual de la UF es $' + response.data.result.value_uf)
+            addBotMessage('El valor actual del dólar observado es $' + response.data.result.value_usd)
+            addBotMessage('El valor actual del Dólar acuerdo es $' + response.data.result.value_exchange_usd)
+            addBotMessage('El valor actual del Euro es $' + response.data.result.value_eur)
+            addBotMessage('El valor actual del IPC es ' + response.data.result.value_ipc)
+            addBotMessage('El valor actual de la UTM es $' + response.data.result.value_utm)
         }).catch(() => {
             Swal.fire("Error", "Error en consulta de indicadores", "error")
         })
