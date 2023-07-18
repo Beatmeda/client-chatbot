@@ -141,7 +141,6 @@ function HomeChatBotInteractive() {
 
     const indicators = () => {
         getIndicators().then((response) => {
-            console.log(response)
             addBotMessage('El valor actual de la UF es $' + response.data.result.value_uf)
             addBotMessage('El valor actual del dólar observado es $' + response.data.result.value_usd)
             addBotMessage('El valor actual del Dólar acuerdo es $' + response.data.result.value_exchange_usd)
